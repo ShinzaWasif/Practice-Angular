@@ -1,0 +1,71 @@
+ <!-- *ngIf recreates pr removees the value from dom where it is assigned-->
+
+<div class="bg-secondary p-3 text-center text-white h3">Structural Directives</div>
+
+<div class="row d-flex justify-content-center gap-1 text-center">
+    <div *ngIf="isDiv1Visible" class= "col-md-2 bg-success p-3 text-white h5">DIV 1</div>
+    <div *ngIf="toggle" class="col-md-2 bg-danger p-3 text-white h5">DIV 2</div>
+    <div *ngIf="num1==num2" class="col-md-2 bg-info p-3 text-white h5">DIV 3</div>
+    <div class="col-md-2 bg-dark p-3 text-white h5">DIV 4</div>
+
+</div>
+
+<div class="row d-flex justify-content-center gap-1 text-center">
+<div class="col-md-2">
+    <button class="btn btn-secondary p-1" (click)="HideDiv1()">Hide</button>
+    <button class="btn btn-success m-2 p-1" (click)="ShowDiv1()">Show</button>
+
+</div>
+<div class="col-md-2">
+    <button class="btn btn-primary m-2 p-1" (click)="Toggle()">Toggle</button>
+
+</div>
+<div class="col-md-2">
+    <div class="d-flex flex-column align-items-center">
+        <input [(ngModel)]="num1" type="text" placeholder="Num-1">
+        <input [(ngModel)]="num2" type="text" placeholder="Num-2">
+
+    </div>
+</div>
+<div class="col-md-2">
+<h3 *ngFor="let item of users">{{item}}</h3>
+<h3 *ngFor="let item of userDetails">{{item.email}}</h3>
+</div>
+</div>
+
+<!-- [] used with ngSwitch indicates that it doesnt manipulate the dom -->
+<div [ngSwitch]="divNum" class="d-flex gap-2">
+    <div *ngSwitchCase="'one'" class="p-2 text-center col-md-3 bg-success text-white">
+        <h3>Div 1</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, sed.
+    </div>
+
+    <div *ngSwitchCase="'two'" class="p-2 text-center col-md-3 bg-success text-white">
+        <h3>Div 2</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, sed.
+    </div>
+
+    <div *ngSwitchCase="'three'" class="p-2 text-center col-md-3 bg-success text-white">
+        <h3>Div 3</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, sed.
+    </div>
+</div>
+
+<div class="d-flex gap-2 mb-3">
+    <button class="btn btn-primary" (click)="showDiv1()">Div 1</button>
+    <button class="btn btn-danger" (click)="showDiv2()">Div 2</button>
+    <button class="btn btn-secondary" (click)="showDiv3()">Div 3</button>
+
+</div>
+
+<div class="d-flex gap-3">
+    <input class="" [(ngModel)]="searchText">
+    <!-- before: class="btn btn-primary" -->
+     <!-- In order to use it synamically with ts value we use [ngClass] | without ts we use ngClass-->
+    <!-- 'btn': true means it will be true always |  'btn-primary':searchText means if searchText has any value it will use this btn-primary class | 'btn-disabled':!searchText this class from scss file will be used when searchText has no value-->
+    <button [ngClass]="{'btn': true, 'btn-primary':searchText, 'btn-disabled':!searchText}" >Search</button>
+</div>
+
+<div class="mt-2 p-2">
+    <p *ngIf="searchText!=''"><strong>Search result for: {{searchText}}</strong></p>
+</div>

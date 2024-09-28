@@ -1,0 +1,23 @@
+<!-- vars binding using interpolation {{}} -->
+<div class="row">
+    <div class="col-4 bg-primary text-white">
+        One way Data Binding from .ts to .html
+    </div>
+    <div class="col-4 bg-danger text-white">
+        {{courseName}}
+    </div>
+    <div class="col-4 bg-secondary text-white">
+        <label for="input">Are you enjoying {{courseName}}?</label>
+        <input type="{{inputType}}" name="input" >
+    </div>
+</div>
+<!-- Event Binding (one way) -->
+        <div class="d-flex flex-column mt-3 w-25 p-3 gap-2 mx-auto">
+        <button (click)="showAlert('Event Binding (one way)')" class="btn btn-success">Click here.</button>
+        <button (click)="changeCourse()" class=" btn btn-primary">Click here.</button>
+        </div>
+<!-- two way binding -->
+ <!-- ngModel works with input only -->
+        <div class="d-flex flex-column mt-3 w-25 p-3 gap-2 mx-auto">
+            <input type="text" [(ngModel)]="courseName">
+        </div>
