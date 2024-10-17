@@ -67,5 +67,10 @@
 </div>
 
 <div class="mt-2 p-2">
-    <p *ngIf="searchText!=''"><strong>Search result for: {{searchText}}</strong></p>
+    <p [ngStyle]="{background: searchText =='shinza' ? 'blue' : 'yellow'}" *ngIf="searchText!=''"><strong>Search result for: {{searchText}}</strong></p>
+</div>
+
+<div class="d-flex gap-2">
+    <button class="btn btn-primary" [routerLink]="['/add-emp']">add-emp via html</button>
+    <button class="btn btn-success" (click)="gotoAddEmp()">add-emp via ts</button>
 </div>
